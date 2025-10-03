@@ -1,0 +1,7 @@
+#1c: How many floating operations does your code require for computing the determinant of an n×n matrix? We are only looking for a rough answer here.
+
+#My code, for computing the determinant of a square matrix, requires roughly n factorial operations. This is because each determinant expansion makes n recursive sub problems that are size n-1, and then those keep breaking down n-2, n-3 till n == 1 (basically just like factorials). So the computational demand of the function increases significantly fast as the size of the square matrix gets bigger.
+
+#1d: Would it be wise to invoke your function on a 20 × 20 matrix? Explain why or why not. Try it?
+
+#No, that would be extremely computationally demanding. IE, it would take on the order of 20! operations cause each step keeps breaking into more sub problems. The runtime becomes astronomically large if I try to run the function on a 20x20 square matrix (basically impossible in practice). So this algorithm is only really practical for small/medium size matrices. Bigger ones need to be computed way more efficiently.
