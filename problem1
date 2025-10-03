@@ -1,0 +1,34 @@
+import numpy as np
+
+def compute_determinant(matrix):
+    
+    n = len(matrix)
+
+    if n == 1:
+        return matrix[0][0]
+    
+    determinant = 0
+
+    for i in range(n):
+        inner_matrix = []
+        temp_matrix = matrix[1:]
+        for row in temp_matrix:
+            left_side_of_inner_matrix = row[:i]
+            right_side_of_inner_matrix = row[i+1:]
+            combined = left_side_of_inner_matrix + right_side_of_inner_matrix
+            inner_matrix.append(combined)
+        determinant += ((-1) ** i) * matrix[0][i] * compute_determinant(inner_matrix)
+    
+    return determinant
+
+#1b: Compare with function output with Numpy library
+
+square_matrix = ([14,21,42],[41,15,26],[37,48,19],)
+square_matrix_determinant = compute_determinant(square_matrix)
+print("Determinant given by my function: " + str(square_matrix_determinant))
+
+numpy_determinant = np.linalg.det(square_matrix)
+print("Numpy determinant: " + str(numpy_determinant))
+
+difference = square_matrix_determinant - numpy_determinant
+print("Difference: " + str(difference)) 
